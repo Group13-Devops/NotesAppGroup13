@@ -1,0 +1,15 @@
+<h2>NEW CONTENT NOTECreate New Note</h2>
+<form action="/notes" method="POST">
+  
+  <label for="content">Content:</label>
+  <textarea name="content" required></textarea>
+  <br>
+  <label for="priority">Priority:</label>
+  <select name="priority">
+      <option value="important">Important</option>
+      <option value="urgent">Urgent</option>
+      <option value="normal" selected>Normal</option>
+  </select>
+  <br>
+  <button type="submit">Save</button>
+</form>

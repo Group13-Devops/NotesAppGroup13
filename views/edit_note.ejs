@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Note</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+      <%- include('./partials/navbar.ejs') %>
+  <h2>Edit Note</h2>
+  <form action="/notes/<%= note._id %>?_method=PUT" method="POST" enctype="application/x-www-form-urlencoded">
+
+
+
+    <input type="hidden" name="_method" value="PUT">
+    
+    <br>
+    <label for="content">Content:</label>
+    <textarea name="content" required><%= note.content %></textarea>
+    <br>
+    <label for="priority">Priority:</label>
+    <select name="priority">
+        <option value="important" <%= note.priority === 'important' ? 'selected' : '' %>>Important</option>
+        <option value="urgent" <%= note.priority === 'urgent' ? 'selected' : '' %>>Urgent</option>
+        <option value="normal" <%= note.priority === 'normal' ? 'selected' : '' %>>Normal</option>
+    </select>
+    <br>
+    <button type="submit">Save</button>
+  </form>
+</body>
+</html>

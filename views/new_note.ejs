@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Note</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <%- include('./partials/navbar.ejs') %>
+  <h2>Create New Note</h2>
+  <form action="/notes" method="POST">
+    <label for="content">Content:</label>
+    <textarea name="content" required></textarea>
+    <br>
+    <label for="priority">Priority:</label>
+    <select name="priority">
+        <option value="important">Important</option>
+        <option value="urgent">Urgent</option>
+        <option value="normal" selected>Normal</option>
+    </select>
+    <br>
+    <button type="submit">Save</button>
+  </form>
+</body>
+</html>
+

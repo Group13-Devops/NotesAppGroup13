@@ -1,0 +1,17 @@
+.eachNote{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    background-color: rgb(230, 233, 236);
+    min-width: 300px;
+    height:85px;
+    border: 0.5px;
+    border-style:solid;
+    border-radius: 5px;
+    padding: 10px;
+    list-style: none;
+    text-align: center;
+}
+

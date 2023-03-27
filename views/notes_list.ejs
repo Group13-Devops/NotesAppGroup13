@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes List</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+      <%- include('./partials/navbar.ejs') %>
+    <h1>Notes List</h1>
+    <ul>
+        <% notes.forEach(note => { %>
+            <li>
+                <h3><%= note.content %></h3>
+                <p>Priority: <%= note.priority %></p>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
