@@ -1,22 +1,31 @@
 #!/usr/bin/env bash
-sudo apt update && sudo apt install nodejs npm
-#Install pm2
+
+# Update the package list and install Node.js 14.x
+sudo apt update
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt install -y nodejs
+
+# Install pm2
 sudo npm install -g pm2
-#stop any instance currently running 
+
+# Stop any running instance of the application
 pm2 stop GroupThirteen
-#change directory
+
+# Remove the old repository folder, if it exists
+rm -rf NotesAppGroup13/
+
+# Clone the latest version of the repository
+git clone https://github.com/Group13-Devops/NotesAppGroup13.git
+
+# Change to the repository folder
 cd NotesAppGroup13/
-#install dependencies
+
+# Install npm dependencies
 npm install
-npm install ejs
-# Remove existing privatekey.pem and server.crt files
-rm -f privatekey.pem server.crt
-# Create privatekey.pem and server.crt from environment variables
+
+# Set up the private key and server certificate
 echo $PRIVATE_KEY > privatekey.pem
 echo $SERVER > server.crt
-#start the app
-pm2 start ./bin/www --name GroupThirteen 
-#pm2 restart GroupThirteen
-git pull origin main
-npm install
-node app.js
+
+# Start (or restart) the application with pm2
+pm2 start ./bin/www --name GroupThirteen
