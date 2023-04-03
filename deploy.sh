@@ -8,6 +8,7 @@ pm2 stop GroupThirteen
 cd NotesAppGroup13/
 #install dependencies
 npm install
+npm install ejs
 echo $PRIVATE_KEY > privatekey.pem
 echo $SERVER > server.crt
 #start the app
