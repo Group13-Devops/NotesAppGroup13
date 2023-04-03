@@ -40,7 +40,7 @@ jobs:
             - ./node_modules
   deploy:
     docker:
-      - image: circleci/node:10.16.3
+      - image: circleci/node:latest
     steps:
       - run:
          name: deploy-application
