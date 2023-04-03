@@ -5,7 +5,7 @@ sudo npm install -g pm2
 #stop any instance currently running 
 pm2 stop GroupThirteen
 #change directory
-cd NotesAppGroup13/
+cd GroupThirteen/
 #install dependencies
 npm install
 echo $PRIVATE_KEY > privatekey.pem
