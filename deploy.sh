@@ -15,7 +15,7 @@ rm -f privatekey.pem server.crt
 echo $PRIVATE_KEY > privatekey.pem
 echo $SERVER > server.crt
 #start the app
-#pm2 start ./bin/www --name GroupThirteen 
+pm2 start ./bin/www --name GroupThirteen 
 #pm2 restart GroupThirteen
 git pull origin main
 npm install
