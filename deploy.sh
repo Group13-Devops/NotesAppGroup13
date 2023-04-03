@@ -20,6 +20,9 @@ git clone https://github.com/Group13-Devops/NotesAppGroup13.git
 # Change to the repository folder
 cd NotesAppGroup13/
 
+#Pull most recent main branch 
+git pull origin main
+
 # Install npm dependencies
 npm install
 
