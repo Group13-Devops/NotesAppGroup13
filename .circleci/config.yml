@@ -39,7 +39,7 @@ jobs:
           paths:
             - ./node_modules
   deploy:
-     docker:
+    docker:
       - image: circleci/node:10.16.3
     steps:
       - run:
