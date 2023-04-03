@@ -17,11 +17,14 @@ rm -rf NotesAppGroup13/
 # Clone the latest version of the repository
 git clone https://github.com/Group13-Devops/NotesAppGroup13.git
 
-# Change to the repository folder
-cd NotesAppGroup13/
-
 #Pull most recent main branch 
 git pull origin main
+
+# Change to the repository folder
+cd NotesAppGroup13/
+echo "Latest commit:"
+git log -1 --oneline
+
 
 # Install npm dependencies
 npm install
@@ -31,5 +34,5 @@ echo $PRIVATE_KEY > privatekey.pem
 echo $SERVER > server.crt
 
 # Start (or restart) the application with pm2
-#pm2 start ./bin/www --name GroupThirteen
-node app.js
+pm2 start ./bin/www --name GroupThirteen
+#node app.js
