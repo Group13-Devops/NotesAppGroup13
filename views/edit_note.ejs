@@ -5,30 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Note</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,400;1,500&display=swap" rel="stylesheet">
+
+    <style>
+      body{
+        background-color: rgb(255, 255, 255);
+      }
+
+      h2 {
+        font-size: 50px;
+        font-family: 'Asap', sans-serif;
+        font-weight: bold;
+        background: -webkit-linear-gradient(#553c9a, #ee4b2b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      label{
+        font-size: 22px;
+        color:#553c9a;
+        text-shadow: 1px 1px #ee4b2b;
+        margin-left: 70px;
+        margin-top: 30px;
+      }
+      textarea{
+        width: 22vw;
+        height: 95px;
+        margin-top: 20px;
+        border-radius: 5px;
+      }
+
+
+
+button{
+    border:3px solid #626262;
+    background: none;
+    background-color: #e4e4e4;
+    cursor: pointer;
+    width:130px;
+    height:50px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    text-shadow: 1px 1px #ff684a;
+    color:#553c9a;
+    border-radius: 10px;
+    outline:none;
+    margin-left: 90px;
+    margin-top: 30px;
+}
+
+.left{
+  float:left;
+  width:40%;
+  height:480px;
+}
+    </style>
   </head>
   <body>
       <%- include('./partials/navbar.ejs') %>
-  <h2>Edit Note</h2>
-  <form action="/notes/<%= note._id %>?_method=PUT" method="POST" enctype="application/x-www-form-urlencoded">
-
-
-
-    <input type="hidden" name="_method" value="PUT">
-    
-    <br>
-    <label for="content">Content:</label>
-    <textarea name="content" required><%= note.content %></textarea>
-    <br>
-    <label for="priority">Priority:</label>
-    <select name="priority">
-        <option value="important" <%= note.priority === 'important' ? 'selected' : '' %>>Important</option>
-        <option value="urgent" <%= note.priority === 'urgent' ? 'selected' : '' %>>Urgent</option>
-        <option value="normal" <%= note.priority === 'normal' ? 'selected' : '' %>>Normal</option>
-    </select>
-    <br>
-    <button type="submit">Save</button>
-  </form>
+      <div class="left"></div>
+      <div class="middle">
+        <h2>Edit Note</h2>
+        <form action="/notes/<%= note._id %>?_method=PUT" method="POST" enctype="application/x-www-form-urlencoded">
+      
+      
+      
+          <input type="hidden" name="_method" value="PUT">
+          
+          <br>
+          <textarea name="content" required><%= note.content %></textarea>
+          <br>
+          <label for="priority">Priority:</label>
+          <select name="priority">
+              <option value="important" <%= note.priority === 'important' ? 'selected' : '' %>>Important</option>
+              <option value="urgent" <%= note.priority === 'urgent' ? 'selected' : '' %>>Urgent</option>
+              <option value="normal" <%= note.priority === 'normal' ? 'selected' : '' %>>Normal</option>
+          </select>
+          <br>
+          <button type="submit">Save</button>
+        </form>
+      </div>
 </body>
 </html>
