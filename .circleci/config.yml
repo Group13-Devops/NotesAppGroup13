@@ -46,7 +46,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "your-fingerprint-here"
+            - "f2:d9:99:3a:54:31:00:5b:4d:57:10:c7:4c:82:66:4b"
       - run:
           name: Install NVM
           command: |
