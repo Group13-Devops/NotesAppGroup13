@@ -25,6 +25,8 @@ cd NotesAppGroup13/
 echo "Latest commit:"
 git log -1 --oneline
 
+source update.sh
+
 
 # Install npm dependencies
 npm install
