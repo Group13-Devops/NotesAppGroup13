@@ -15,7 +15,7 @@ pm2 stop GroupThirteen
 rm -rf NotesAppGroup13/
 
 # Clone the latest version of the repository
-git clone https://github.com/Group13-Devops/NotesAppGroup13.git
+#git clone https://github.com/Group13-Devops/NotesAppGroup13.git
 
 #Pull most recent main branch 
 git pull origin main
