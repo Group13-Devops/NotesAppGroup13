@@ -1,20 +1,25 @@
 #!/usr/bin/env bash
 
-# Stop any running instance of the application
-pm2 delete GroupThirteen
+# Print current working directory
+echo "Current working directory: $(pwd)"
 
-# Fetch the latest changes from the remote repository
-git fetch --all
+# Pull the latest changes from the repository
+echo "Pulling latest changes from the repository..."
+git pull origin main
 
-# Reset the local branch to match the remote main branch
-git reset --hard origin/main
+# Print the latest commit
+echo "Latest commit:"
+git log -1 --oneline
 
 # Install npm dependencies
+echo "Installing npm dependencies..."
 npm install
 
 # Set up the private key and server certificate
+echo "Setting up private key and server certificate..."
 echo $PRIVATE_KEY > privatekey.pem
 echo $SERVER > server.crt
 
-# Start the application with pm2
-pm2 start ./bin/www --name GroupThirteen
+# Start (or restart) the application with pm2
+echo "Starting (or restarting) the application with pm2..."
+pm2 restart GroupThirteen || pm2 start ./bin/www --name GroupThirteen
