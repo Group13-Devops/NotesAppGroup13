@@ -67,6 +67,6 @@ jobs:
           name: Deploy to EC2
           command: |
             chmod +x update.sh
-            scp update.sh $SSH_USER@$SSH_HOST:/home/$SSH_USER/update.sh
-            scp -r .circleci/ $SSH_USER@$SSH_HOST:/home/$SSH_USER/.circleci/
-            ssh -tt $SSH_USER@$SSH_HOST 'sudo bash update.sh'
+            scp update.sh $EC2_13@$EC2_PUBLIC_DNS:/home/$EC2_13/update.sh
+            scp -r .circleci/ $EC2_13@$EC2_PUBLIC_DNS:/home/$EC2_13/.circleci/
+            ssh -tt $EC2_13@$EC2_PUBLIC_DNS 'sudo bash update.sh'
