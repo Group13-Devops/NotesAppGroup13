@@ -3,13 +3,13 @@
 # Update the package list and install Node.js 14.x
 sudo apt update
 curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt install -y nodejs
+sudo apt install -y nodejs npm
 
 # Install pm2
 sudo npm install -g pm2
 
 # Stop any running instance of the application
-pm2 restart GroupThirteen
+#pm2 restart GroupThirteen
 
 # Remove the old repository folder, if it exists
 rm -rf NotesAppGroup13/
