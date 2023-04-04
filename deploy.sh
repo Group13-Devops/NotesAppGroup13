@@ -9,7 +9,7 @@ sudo apt install -y nodejs
 sudo npm install -g pm2
 
 # Stop any running instance of the application
-pm2 stop GroupThirteen
+#pm2 stop GroupThirteen
 
 # Remove the old repository folder, if it exists
 rm -rf NotesAppGroup13/
