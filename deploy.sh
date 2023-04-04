@@ -27,14 +27,14 @@ git log -1 --oneline
 
 source update.sh
 
-
+#############################
 # Install npm dependencies
-npm install
+#npm install
 
 # Set up the private key and server certificate
-echo $PRIVATE_KEY > privatekey.pem
-echo $SERVER > server.crt
+#echo $PRIVATE_KEY > privatekey.pem
+#echo $SERVER > server.crt
 
 # Start (or restart) the application with pm2
-pm2 start ./bin/www --name GroupThirteen
+#pm2 start ./bin/www --name GroupThirteen
 #node app.js
