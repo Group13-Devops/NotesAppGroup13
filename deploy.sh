@@ -13,18 +13,17 @@ pm2 delete GroupThirteen
 
 # Remove the old repository folder, if it exists
 rm -rf NotesAppGroup13/
-if [ $? -eq 0 ]; then
-  echo "Successfully removed old repository folder"
-else
-  echo "Failed to remove old repository folder"
-  exit 1
-fi
 
 # Clone the latest version of the repository
 git clone https://github.com/Group13-Devops/NotesAppGroup13.git
 
 # Change to the repository folder
 cd NotesAppGroup13/
+
+# Force pull the latest changes from the main branch
+git fetch --all
+git reset --hard origin/main
+
 echo "Latest commit:"
 git log -1 --oneline
 
