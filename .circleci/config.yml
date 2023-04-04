@@ -40,33 +40,8 @@ jobs:
             - ./node_modules
   deploy:
     docker:
-      - image: circleci/python:3.9
-    working_directory: ~/NotesAppGroup13
+      - image: circleci/node:latest
     steps:
-      - checkout
-      - add_ssh_keys:
-          fingerprints:
-            - "f2:d9:99:3a:54:31:00:5b:4d:57:10:c7:4c:82:66:4b"
       - run:
-          name: Install NVM
-          command: |
-            curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-            echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
-            echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm' >> $BASH_ENV
-            echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion' >> $BASH_ENV
-            source $BASH_ENV
-      - run:
-          name: Install Node.js and npm
-          command: |
-            nvm install 14
-            nvm use 14
-            nvm alias default 14
-            node -v
-            npm -v
-      - run:
-          name: Deploy to EC2
-          command: |
-            chmod +x update.sh
-            scp update.sh $EC2_13@$EC2_PUBLIC_DNS:/home/$EC2_13/update.sh
-            scp -r .circleci/ $EC2_13@$EC2_PUBLIC_DNS:/home/$EC2_13/.circleci/
-            ssh -tt $EC2_13@$EC2_PUBLIC_DNS 'sudo bash update.sh'
+         name: deploy-application
+         command: ssh -o StrictHostKeyChecking=no $EC2_13@$EC2_PUBLIC_DNS "export SERVER=\"$SERVER\"; export PRIVATE_KEY=\"$PRIVATE_KEY\"; rm -rf NotesAppGroup13/;git clone https://github.com/Group13-Devops/NotesAppGroup13.git; source NotesAppGroup13/deploy.sh"
