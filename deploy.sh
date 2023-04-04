@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+ #!/usr/bin/env bash
 
 # Update the package list and install Node.js 14.x
 sudo apt update
@@ -9,7 +9,7 @@ sudo apt install -y nodejs npm
 sudo npm install -g pm2
 
 # Stop any running instance of the application
-pm2 delete GroupThirteen
+#pm2 restart GroupThirteen
 
 # Remove the old repository folder, if it exists
 rm -rf NotesAppGroup13/
@@ -17,15 +17,14 @@ rm -rf NotesAppGroup13/
 # Clone the latest version of the repository
 git clone https://github.com/Group13-Devops/NotesAppGroup13.git
 
+#Pull most recent main branch 
+#git pull origin main
+
 # Change to the repository folder
 cd NotesAppGroup13/
-
-# Force pull the latest changes from the main branch
-git fetch --all
-git reset --hard origin/main
-
 echo "Latest commit:"
 git log -1 --oneline
+
 
 # Install npm dependencies
 npm install
@@ -34,5 +33,6 @@ npm install
 echo $PRIVATE_KEY > privatekey.pem
 echo $SERVER > server.crt
 
-# Start the application with pm2
+# Start (or restart) the application with pm2
 pm2 start ./bin/www --name GroupThirteen
+#node app.js
