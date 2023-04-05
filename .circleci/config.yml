@@ -1,5 +1,9 @@
 version: 2.1
 
+# Disable shallow clones
+git:
+  depth: false
+
 workflows:
   version: 2
   build:
