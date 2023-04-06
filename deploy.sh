@@ -11,6 +11,9 @@ sudo npm install -g pm2
 # Stop any running instance of the application
 #pm2 restart GroupThirteen
 
+#stay in superuser 
+sudo su -
+
 # Remove the old repository folder, if it exists
 rm -rf NotesAppGroup13/
 
@@ -25,16 +28,16 @@ cd NotesAppGroup13/
 echo "Latest commit:"
 git log -1 --oneline
 
-source update.sh
+#source update.sh
 
 #############################
 # Install npm dependencies
-#npm install
+npm install
 
 # Set up the private key and server certificate
-#echo $PRIVATE_KEY > privatekey.pem
-#echo $SERVER > server.crt
+echo $PRIVATE_KEY > privatekey.pem
+echo $SERVER > server.crt
 
 # Start (or restart) the application with pm2
-#pm2 start ./bin/www --name GroupThirteen
+pm2 start ./bin/www --name GroupThirteen
 #node app.js
