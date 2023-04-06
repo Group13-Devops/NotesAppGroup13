@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const app = express();
 const path = require('path');
 const methodOverride = require('method-override');
+// HTTPS :
+const https = require('https');
+const fs = require('fs');
 
 const mongoose = require('mongoose');
 const Note = require('./model/note');
@@ -153,6 +156,18 @@ app.get('/notes/:id/edit', (req, res) => {
 
 
 const port = process.env.PORT || 4000;
+/*
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+*/
+const sslOptions = {
+  key: fs.readFileSync(path.join('privatekey.pem')),
+  cert: fs.readFileSync(path.join('server.crt')),
+};
+
+const server = https.createServer(sslOptions, app);
+server.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
+
