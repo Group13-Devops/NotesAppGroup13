@@ -43,6 +43,9 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
+      - run:
+          name: audit-packages
+          command: npm audit
   deploy:
     docker:
       - image: circleci/node:latest
